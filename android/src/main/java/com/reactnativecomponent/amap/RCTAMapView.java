@@ -151,6 +151,10 @@ public class RCTAMapView extends FrameLayout implements LocationSource, AMapLoca
         if(centerMarker !=null && centerMarker != "") {
             CenterView.setLayoutParams(new ViewGroup.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
             CenterView.setImageResource(getImageId(centerMarker));
+            ViewGroup parent = (ViewGroup) CenterView.getParent();
+            if (parent != null) {
+                parent.removeView(CenterView);
+            }
             this.addView(CenterView, 1);
         }
 
